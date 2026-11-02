@@ -2,7 +2,7 @@
 
 ## What is OpenFile?
 
-OpenFile is a file manager used to browse files on your computer. It is a file manager built with Python and PyQt6 designed to be private and lightweight by design.
+OpenFile is a file manager used to browse files on your computer. It is a file manager built with Python and PyQt6 designed to be private, fast, and lightweight by design.
 
 ## Roadmap:
 
