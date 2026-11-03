@@ -36,6 +36,7 @@ From the project root run: `python src\main.py` or double click `main.py` in `sr
 - `touch <name>` - Creates a new empty text file.
 - `cat <name>` - Shows the contents of a file.
 - `rm <name>` - Deletes a file.
+- `rmdir <name>` - Deletes empty folders.
 - `clear` - Clears the screen.
 - `exit` - Closes the app.
 
