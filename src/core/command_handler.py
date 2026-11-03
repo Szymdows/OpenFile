@@ -12,6 +12,7 @@ class CommandHandler:
             "cd": self.cmd_cd,
             "mkdir": self.cmd_mkdir,
             "touch": self.cmd_touch,
+            "cat": self.cmd_cat,
         }
 
     def execute(self, text):
@@ -40,6 +41,10 @@ class CommandHandler:
             return "Error: permission denied."
         except OSError as error:
             return f"Error: {error}"
+        except IsADirectoryError:
+            return "Error: that is a folder, not a file."
+        except UnicodeDecodeError:
+            return "Error: this file is not a readable text file."
 
     # ------- Commands ----------
 
@@ -52,6 +57,7 @@ class CommandHandler:
             "  cd <folder>   Go into a folder (use '..' to go up)\n"
             "  mkdir <name>  Create a new folder\n"
             "  touch <name>  Create a new empty file\n"
+            "  cat <name>    Show the contents of a file\n"
             "  clear         Clear the screen\n"
             "  exit          Close the program"
         )
@@ -82,3 +88,11 @@ class CommandHandler:
             return "Usage: touch <file name>"
         self.file_manager.make_file(argument)
         return f"Created file: {argument}"
+
+    def cmd_cat(self, argument):
+        if not argument:
+            return "Usage: cat <file name>"
+        text = self.file_manager.read_file(argument)
+        if not text:
+            return "(empty file)"
+        return text

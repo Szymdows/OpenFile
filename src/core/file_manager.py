@@ -39,3 +39,10 @@ class FileManager:
         # Create a new empty file in the current folder.
         # exist_ok tells python if a file already exists.
         (self.current_path / name).touch(exist_ok=False)
+
+    def read_file(self, name):
+        # Return the text inside of a file.
+        path = self.current_path / name
+        if path.is_dir():
+            raise IsADirectoryError
+        return path.read_text(encoding="utf-8")
