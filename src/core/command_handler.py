@@ -13,6 +13,7 @@ class CommandHandler:
             "mkdir": self.cmd_mkdir,
             "touch": self.cmd_touch,
             "cat": self.cmd_cat,
+            "rm": self.cmd_rm,
         }
 
     def execute(self, text):
@@ -58,6 +59,7 @@ class CommandHandler:
             "  mkdir <name>  Create a new folder\n"
             "  touch <name>  Create a new empty file\n"
             "  cat <name>    Show the contents of a file\n"
+            "  rm <name>     Delete a file (permanent!)\n"
             "  clear         Clear the screen\n"
             "  exit          Close the program"
         )
@@ -96,3 +98,9 @@ class CommandHandler:
         if not text:
             return "(empty file)"
         return text
+
+    def cmd_rm(self, argument):
+        if not argument:
+            return "Usage: rm <file name>"
+        self.file_manager.delete_file(argument)
+        return f"Deleted file: {argument}"

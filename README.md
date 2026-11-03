@@ -35,6 +35,7 @@ From the project root run: `python src\main.py` or double click `main.py` in `sr
 - `mkdir <name>` - Creates a new folder.
 - `touch <name>` - Creates a new empty text file.
 - `cat <name>` - Shows the contents of a file.
+- `rm <name>` - Deletes a file.
 - `clear` - Clears the screen.
 - `exit` - Closes the app.
 

@@ -46,3 +46,10 @@ class FileManager:
         if path.is_dir():
             raise IsADirectoryError
         return path.read_text(encoding="utf-8")
+
+    def delete_file(self, name):
+        # Delete a file.
+        path = self.current_path / name
+        if path.is_dir():
+            raise IsADirectoryError
+        path.unlink()
