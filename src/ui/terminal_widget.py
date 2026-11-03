@@ -30,7 +30,7 @@ class TerminalWidget(QPlainTextEdit):
             "QPlainTextEdit {"
             "  background-color: #1e1e1e;"
             "  color: #dcdcdc;"
-            "  padding: 6px;"
+            "  padding: 20px;"
             "  border: none;"
             "}"
         )
