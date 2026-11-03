@@ -53,3 +53,22 @@ class FileManager:
         if path.is_dir():
             raise IsADirectoryError
         path.unlink()
+
+    def remove_directory(self, name):
+        # Delete an empty folder.
+        path = self.current_path / name
+
+        if not path.exists():
+            raise FileNotFoundError
+        if not path.is_dir():
+            raise NotADirectoryError
+
+        # Don't allow deleting the folder we are currently inside.
+        if path.resolve() == self.current_path:
+            raise OSError("You are inside of that folder. Use 'cd ..' first.")
+
+        # any() is true if the folder contains at least one item.
+        if any(path.iterdir()):
+            raise OSError("That folder is not empty.")
+
+        path.rmdir()

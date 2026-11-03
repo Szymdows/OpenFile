@@ -14,6 +14,7 @@ class CommandHandler:
             "touch": self.cmd_touch,
             "cat": self.cmd_cat,
             "rm": self.cmd_rm,
+            "rmdir": self.cmd_rmdir,
         }
 
     def execute(self, text):
@@ -60,6 +61,7 @@ class CommandHandler:
             "  touch <name>  Create a new empty file\n"
             "  cat <name>    Show the contents of a file\n"
             "  rm <name>     Delete a file (permanent!)\n"
+            "  rmdir <name>  Delete an empty folder\n"
             "  clear         Clear the screen\n"
             "  exit          Close the program"
         )
@@ -104,3 +106,9 @@ class CommandHandler:
             return "Usage: rm <file name>"
         self.file_manager.delete_file(argument)
         return f"Deleted file: {argument}"
+
+    def cmd_rmdir(self, argument):
+        if not argument:
+            return "Usage: rmdir <folder name>"
+        self.file_manager.remove_directory(argument)
+        return f"Deleted folder: {argument}"
