@@ -34,3 +34,8 @@ class FileManager:
     def make_directory(self, name):
         # Create a new folder inside of the current folder.
         (self.current_path / name).mkdir()
+
+    def make_file(self, name):
+        # Create a new empty file in the current folder.
+        # exist_ok tells python if a file already exists.
+        (self.current_path / name).touch(exist_ok=False)

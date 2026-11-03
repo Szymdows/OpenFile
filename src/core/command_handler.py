@@ -11,6 +11,7 @@ class CommandHandler:
             "ls": self.cmd_ls,
             "cd": self.cmd_cd,
             "mkdir": self.cmd_mkdir,
+            "touch": self.cmd_touch,
         }
 
     def execute(self, text):
@@ -50,6 +51,7 @@ class CommandHandler:
             "  ls            List files and folders\n"
             "  cd <folder>   Go into a folder (use '..' to go up)\n"
             "  mkdir <name>  Create a new folder\n"
+            "  touch <name>  Create a new empty file\n"
             "  clear         Clear the screen\n"
             "  exit          Close the program"
         )
@@ -74,3 +76,9 @@ class CommandHandler:
             return "Usage: mkdir <folder name>"
         self.file_manager.make_directory(argument)
         return f"Created folder: {argument}"
+
+    def cmd_touch(self, argument):
+        if not argument:
+            return "Usage: touch <file name>"
+        self.file_manager.make_file(argument)
+        return f"Created file: {argument}"
